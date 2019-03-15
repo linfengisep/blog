@@ -1,17 +1,5 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-    <div class="row">
-        <div class = "col-xs-12">
-            <h2>List of posts</h2>
-            <ul class=list-group>
-                <app-post-item myPost="gillet jaune"></app-post-item>
-                <app-post-item myPost="remise diplôme"></app-post-item>
-                <app-post-item myPost="jeu O"></app-post-item>
-            </ul>
-            <button class="btn btn-success"
-                    [disabled]="!isAuth"
-                    (click)="close()"
-                    >close</button>
-        </div>
-    </div>
+    <h1>{{myPosts.length}}</h1>
+    <app-post-list postsArr={{myPosts}}>
+    </app-post-list>
 </div>

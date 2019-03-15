@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostItemComponent } from './post-item/post-item.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PostItemComponent,
+    PostListComponent,
   ],
   imports: [
     BrowserModule,

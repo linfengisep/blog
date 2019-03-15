@@ -1,6 +1,11 @@
-<li class="list-group-item">
-    <h4 >
-        post content:{{myPost}}-status:{{getStatus()}}
-    </h4>
-    <input type="text" class="form-control" [(ngModel)]="myPost">
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success':post.loveIts>=0,
+                'list-group-item-danger':post.loveIts<0}">
+    <div [ngStyle]="{color:renderColor()}">
+        <h4 style="position:absolute;top:10px;right:10px;">Mis à jour:{{lastUpdate | date:'short'}}</h4>
+        <h4 [ngStyle]="{color:renderColor()}">{{post.title}}</h4>
+        <p>{{post.content}}</p>
+        <button class="btn btn-success">love it!</button>
+        <button class="btn btn-danger">Don't love it!</button>
+    </div>
 </li>
