@@ -8,15 +8,6 @@ import { Post } from '../models/post';
 })
 export class PostItemComponent implements OnInit {
     @Input() post: Post;
-    lastUpdate = new Promise(
-    (resolve,reject)=>{
-        const date = new Date();
-        setTimeout(
-            ()=>{
-            resolve(date);
-        },3000);
-    }
-    );
     constructor() { }
     ngOnInit() {
         console.log(this.post.content);
@@ -30,4 +21,11 @@ export class PostItemComponent implements OnInit {
         }
     }
 
+    increase(){
+        this.post.loveIts++;
+    }
+
+    decrease(){
+        this.post.loveIts--;
+    }
 }

@@ -7,11 +7,11 @@ import { Post } from '../models/post';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
-    @Input() postsArr : Post[];
+    @Input() postsArray : Post[];
 
     constructor() { }
     ngOnInit() {
-        //console.log("post array length:"+this.postsArr.lenth);
+        console.log("post array length:"+this.postsArray.length);
     }
 
 }
