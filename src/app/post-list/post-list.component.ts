@@ -8,10 +8,8 @@ import { Post } from '../models/post';
 })
 export class PostListComponent implements OnInit {
     @Input() postsArray : Post[];
-
     constructor() { }
     ngOnInit() {
-        console.log("post array length:"+this.postsArray.length);
     }
 
 }
