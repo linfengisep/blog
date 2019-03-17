@@ -8,10 +8,9 @@ import { PostService } from '../services/post.service';
 })
 export class PostItemComponent implements OnInit {
     @Input() post: Post;
-    @Input() index : number;
     constructor(private postService:PostService) { }
     ngOnInit() {
-        console.log("post index:"+this.index);
+        //console.log("post index:"+this.post.id);
     }
 
     renderColor(){
@@ -23,16 +22,16 @@ export class PostItemComponent implements OnInit {
     }
 
     increase(){
-        this.post.loveIts++;
-        console.log("post title:"+this.post.title+",loves number:"+this.post.loveIts);
+        this.postService.lovesIncrease(this.post.id);
+        console.log("this.post.id:"+this.post.id+",loves number:"+this.post.loveIts);
     }
 
     decrease(){
-        this.post.loveIts--;
+        this.postService.lovesDecrease(this.post.id);
         console.log("post title:"+this.post.title+",loves number:"+this.post.loveIts);
     }
     delete(){
-        console.log("index:"+this.index);
-        this.postService.deleteByIndex(this.index);
+        //console.log("id:"+this.post.id);
+        this.postService.deleteById(this.post.id);
      }
 }
