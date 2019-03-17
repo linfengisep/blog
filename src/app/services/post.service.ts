@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService{
-    data = [new Post(1,'Mon premier post',
+    postSubject = new Subject<any[]>();
+    private data = [new Post(1,'Mon premier post',
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
                 new Post(2,'Mon deuxième post',
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
                 new Post(3,'Encore un post',
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')]
     constructor() { }
+
+    emitPostSubject(){
+        this.postSubject.next(this.data.slice());
+    }
 
     deleteById(index:number){
         const postToDelete = this.data.find(
@@ -22,6 +28,7 @@ export class PostService{
         const indexInPosts = this.data.indexOf(postToDelete);
         console.log("index in posts:"+indexInPosts);
         this.data.splice(indexInPosts,1);
+        this.emitPostSubject();
     }
 
     getPostById(index:number){
@@ -40,6 +47,7 @@ export class PostService{
                 return targetPost.id === index;
             }
         ).loveIts++;
+        this.emitPostSubject();
     }
     lovesDecrease(index:number){
         this.data.find(
@@ -47,5 +55,6 @@ export class PostService{
                 return targetPost.id === index;
             }
         ).loveIts--;
+        this.emitPostSubject();
     }
 }
