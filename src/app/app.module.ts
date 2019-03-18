@@ -15,10 +15,12 @@ import { Routes,RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 const appRoutes = [
     {path:'posts',component:PostListComponent,canActivate:[AuthGuardService]},
     {path:'posts/:id',component:PostDetailComponent,canActivate:[AuthGuardService]},
+    {path:'edit',component:EditPostComponent, canActivate:[AuthGuardService]},
     {path:'auth',component:AuthComponent},
     {path:'',component:PostListComponent},
     {path:'not-found',component:FourOhFourComponent},
@@ -33,6 +35,7 @@ const appRoutes = [
     AuthComponent,
     PostDetailComponent,
     FourOhFourComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,

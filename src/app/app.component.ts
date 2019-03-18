@@ -4,7 +4,7 @@ import { Post } from './models/post';
 import { PostService } from './services/post.service';
 
 import { Observable } from 'rxjs';
-import { Subscription } from 'rxjs';
+import { interval,Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,15 +18,15 @@ export class AppComponent implements OnInit,OnDestroy{
     constructor(private postService:PostService){
     }
     ngOnInit(){
-        // const counter = Observable.interval(1000);
-        // this.counterSubscription = counter.subscribe(
-        //     (value:number)=>{
-        //         this.seconds = value;
-        //     }
-        // );
+        const counter = interval(1000);
+        this.counterSubscription = counter.subscribe(
+            (value:number)=>{
+                this.seconds = value;
+            }
+        );
     }
 
     ngOnDestroy(){
-        //this.counterSubscription.unsubscribe();
+        this.counterSubscription.unsubscribe();
     }
 }

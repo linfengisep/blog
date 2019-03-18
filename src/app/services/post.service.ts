@@ -14,9 +14,16 @@ export class PostService{
                 new Post(3,'Encore un post',
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')]
     constructor() { }
-
     emitPostSubject(){
         this.postSubject.next(this.data.slice());
+    }
+    createPost(title:string,content:string){
+        const newPost = new Post(0,null,null);
+        newPost.title = title;
+        newPost.content = content;
+        newPost.id = this.data[(this.data.length-1)].id+1;
+        this.data.push(newPost);
+        this.emitPostSubject();
     }
 
     deleteById(index:number){

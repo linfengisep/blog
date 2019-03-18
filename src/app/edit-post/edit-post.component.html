@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <form (ngSubmit)="onSubmit(newPost)" #newPost="ngForm">
+            <div class="form-group">
+                <label for="title">Post Title:</label>
+                <input type="text" id="title" class="form-control" name="title" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="content">Post Content</label>
+                <input type="text" id="content" class="form-control" name="content" ngModel required>
+            </div>
+            <button class="btn btn-success" type="submit" [disabled]="newPost.invalid">Submit</button>
+        </form>
+    </div>
+</div>
