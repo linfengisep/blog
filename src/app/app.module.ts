@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,11 +16,15 @@ import { AuthComponent } from './auth/auth.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const appRoutes = [
     {path:'posts',component:PostListComponent,canActivate:[AuthGuardService]},
     {path:'posts/:id',component:PostDetailComponent,canActivate:[AuthGuardService]},
     {path:'edit',component:EditPostComponent, canActivate:[AuthGuardService]},
+    {path:'users',component:UserListComponent, canActivate:[AuthGuardService]},
+    {path:'new-user',component:NewUserComponent},
     {path:'auth',component:AuthComponent},
     {path:'',component:PostListComponent},
     {path:'not-found',component:FourOhFourComponent},
@@ -36,11 +40,14 @@ const appRoutes = [
     PostDetailComponent,
     FourOhFourComponent,
     EditPostComponent,
+    UserListComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [AuthGuardService],
